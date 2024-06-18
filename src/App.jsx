@@ -26,6 +26,7 @@ export const App = () => {
   const [visibleList, setVisibleList] = useState(products);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedUser, setSelectedUser] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   function sortByName(name) {
     const sortedByName = products.filter(
@@ -77,7 +78,7 @@ export const App = () => {
                 <a
                   onClick={() => {
                     setVisibleList(products);
-                    setSelectedUser('all')
+                    setSelectedUser('all');
                   }}
                   data-cy="FilterAllUsers"
                   href="#/"
@@ -149,10 +150,11 @@ export const App = () => {
                   <a
                     onClick={() => {
                       sortByCategory(category.title);
+                      setSelectedCategory(category.title);
                     }}
                     data-cy="Category"
-                    className="button mr-2 my-1 is-info"
                     href="#/"
+                    className={`button mr-2 my-1 ${selectedCategory === category.title ? 'is-info' : ''}`}
                   >
                     {category.title}
                   </a>
