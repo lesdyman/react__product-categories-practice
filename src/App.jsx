@@ -155,6 +155,9 @@ export const App = () => {
 
               <div className="panel-block">
                 <a
+                  onClick={() => {
+                    setVisibleList(products);
+                  }}
                   data-cy="ResetAllButton"
                   href="#/"
                   className="button is-link is-outlined is-fullwidth"
