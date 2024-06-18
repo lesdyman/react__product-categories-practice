@@ -113,16 +113,17 @@ export const App = () => {
                   </span>
 
                   <span className="icon is-right">
-                    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                    <button
-                      onClick={() => {
-                        setVisibleList(products);
-                        setSearchQuery('');
-                      }}
-                      data-cy="ClearButton"
-                      type="button"
-                      className="delete"
-                    />
+                    {searchQuery.length > 0 && (
+                      <button
+                        onClick={() => {
+                          setVisibleList(products);
+                          setSearchQuery('');
+                        }}
+                        data-cy="ClearButton"
+                        type="button"
+                        className="delete"
+                      />
+                    )}
                   </span>
                 </p>
               </div>
