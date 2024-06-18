@@ -25,6 +25,7 @@ const products = productsFromServer.map(product => {
 export const App = () => {
   const [visibleList, setVisibleList] = useState(products);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedUser, setSelectedUser] = useState('all');
 
   function sortByName(name) {
     const sortedByName = products.filter(
@@ -76,9 +77,11 @@ export const App = () => {
                 <a
                   onClick={() => {
                     setVisibleList(products);
+                    setSelectedUser('all')
                   }}
                   data-cy="FilterAllUsers"
                   href="#/"
+                  className={selectedUser === 'all' ? 'is-active' : ''}
                 >
                   All
                 </a>
@@ -87,10 +90,12 @@ export const App = () => {
                   <a
                     onClick={() => {
                       sortByName(user.name);
+                      setSelectedUser(user.name);
                     }}
                     key={user.id}
                     data-cy="FilterUser"
                     href="#/"
+                    className={selectedUser === user.name ? 'is-active' : ''}
                   >
                     {user.name}
                   </a>
